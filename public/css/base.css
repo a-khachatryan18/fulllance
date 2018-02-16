@@ -1,0 +1,13 @@
+body, html{
+    padding: 0;
+    margin: 0;
+}
+.page-footer a{
+    color: #FFFFFF;
+}
+a:hover{
+    text-decoration: none;
+}
+ul{
+    margin-bottom: 0;
+}
