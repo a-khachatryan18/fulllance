@@ -12,3 +12,13 @@
 */
 
 Route::get('/', 'ClientPagesController@home');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+Route::group(['middleware' => 'web'], function () {
+    Route::get('signup', ['as'=>'signup','uses'=>'Auth\AuthController@showSignup']);
+    Route::post('signup_user', ['as'=>'signup_user','uses'=>'Auth\AuthController@signup_user']);
+
+});

@@ -1,13 +1,54 @@
 body, html{
     padding: 0;
     margin: 0;
+    font-family: 'Gotham-Medium', Arial, sans-serif;
 }
-.page-footer a{
-    color: #FFFFFF;
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,p{
+    font-family: 'Gotham-Medium', Arial, sans-serif;
+}
+a{
+    color: #37a000;
+    text-decoration: none;
+}
+@font-face{
+    font-family: 'Gotham-Medium';
+    src: url('./fontsGotham-Medium.eot');
+    src: url('./fontsGotham-Medium.eot') format('eot'),
+    url('./fonts/Gotham-Medium.woff') format('woff'),
+    url('./fontsGotham-Medium.ttf') format('truetype');
+    /*url('Gotham-Medium.svg') format('svg')*/
 }
 a:hover{
     text-decoration: none;
 }
 ul{
     margin-bottom: 0;
+}
+.form-horizontal .form-group {
+    margin: 0 0 20px;
+}
+.btn.active, .btn:active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.t-b-space{
+    padding: 50px;
+}
+.m-t-20{
+    margin-top: 20px;
+}
+.sm-line{
+    width: 80px;
+    border: 2px solid #ccc;
+    margin-left: auto;
+    margin-right: auto;
+}
+#form_step2 small{
+    position: relative;
+    top:-3px;
+}
+.invalid_input{
+    border-color: red;
 }

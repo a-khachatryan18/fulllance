@@ -1,0 +1,77 @@
+#app-layout .navbar{
+    background: #fff;
+    border: none;
+    margin-bottom: 0;
+    box-shadow: 0 1px 6px rgba(57,73,76,.35);
+}
+#app-layout .navbar-brand{
+    height: 65px;
+}
+.app-footer p.copyright{
+    color: #f2f2f2;
+}
+.app-footer p a{
+    color: #ccc;
+}
+.app-footer p{
+    margin-bottom: 0;
+}
+.app-footer{
+    padding: 10px 0;
+    background: #7d7d7d;
+}
+.register_content{
+    padding: 0 30px;
+}
+#app-layout form button{
+    margin-top: 20px;
+    border-radius: 2px;
+}
+#signup_page{
+    background: #f9f9f9;
+}
+#signup_page .panel_title h2{
+    margin: 20px 0 30px 0;
+}
+.signup_container{
+    position: relative;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 1px 6px rgba(57,73,76,.35);
+    border-radius: 0;
+    margin: 50px 0 40px 0;
+}
+.register_content .form-group i{
+    position: absolute;
+    top:12px;
+    left: 24px;
+    color: #a7a7a7;
+}
+.select2-container{
+    width: 100% !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    line-height: 34px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    height:35px;
+}
+.select2-container .select2-selection--single{
+    height:38px;
+    border-radius: 1px;
+}
+#form_step2{
+    display: none;
+}
+.user_type:hover {
+    border-color: transparent;
+    background-color: #008329;
+    color: #fff;
+}
+.user_type {
+    border-radius: 0;
+    padding: 9px 28px;
+    box-shadow: 0 1px 3px rgba(57,73,76,.35);
+    border-color: transparent;
+}
+

@@ -1,0 +1,52 @@
+.page-footer a{
+    color: #FFFFFF;
+}
+.page-footer .copyright{
+    color: #f2f2f2;
+}
+.hero_content h1,.hero_content p{
+    color: #f2f2f2;
+}
+#categories_section{
+    background: #f2f2f2;
+}
+.category_item .category_name{
+    color: #797979;
+}
+.section_title{
+    color: #666666;
+}
+.bg-white {
+    background-color: #fff;
+}
+.category_item:hover .rounded i, .category_item:hover .category_name{
+    color: #37a000;
+}
+.step_name{
+    color: #4e4949;
+}
+.step_desc{
+    color: #7b7b7b;
+}
+.skill_name{
+    color: #7b7b7b;
+}
+.skill_name:hover{
+    color: #37a000;
+}
+.text_green{
+    color: #37a000;
+}
+#browse_skills{
+    background: #f9f9f9
+}
+.bg-grass {
+    background-color: #5bbc2e;
+}
+#hero_signup .action_btn:hover{
+    background: #FFFFFF;
+    color: #37a000;
+}
+#hero_signup h2{
+    color: #FFFFFF;
+}

@@ -46,6 +46,14 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
+    public function showSignup()
+    {
+
+        $data['title'] = 'Create an account - Fulllance';
+        return view('auth.register', ['data' => $data]);
+    }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
