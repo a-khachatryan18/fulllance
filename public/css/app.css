@@ -31,7 +31,27 @@
     background: #f9f9f9;
 }
 #signup_page .panel_title h2{
-    margin: 20px 0 30px 0;
+    margin: 20px 0 12px 0;
+}
+#user_email{
+    margin-bottom: 28px;
+    font-weight: bold;
+}
+#freelancer_fields{
+    top: 20px;
+    display:block;
+    clear: both;
+    position: relative;
+    overflow: auto;
+}
+#captcha_img{
+    margin-top: 30px;
+}
+#refresh_img i{
+    position: relative;
+    top: 15px;
+    left: -5px;
+    font-size: 20px;
 }
 .signup_container{
     position: relative;
@@ -41,7 +61,7 @@
     border-radius: 0;
     margin: 50px 0 40px 0;
 }
-.register_content .form-group i{
+.register_content .form-group i, .login_content .form-group i{
     position: absolute;
     top:12px;
     left: 24px;
@@ -63,7 +83,7 @@
 #form_step2{
     display: none;
 }
-.user_type:hover {
+.user_type:hover, .user_type.active_type {
     border-color: transparent;
     background-color: #008329;
     color: #fff;

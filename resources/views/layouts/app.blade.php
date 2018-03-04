@@ -38,7 +38,7 @@
                             <p class="navbar-text text-right">
                                 <span class="hidden-xs">Already have an account?</span>
                                 <strong class="hidden-lg hidden-md hidden-sm visible-xs-inline-block p-md-right">Create account</strong>
-                                <a href="/login" target="_self">
+                                <a href="/signin" target="_self">
                                     Log In
                                 </a>
                             </p>

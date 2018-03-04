@@ -132,6 +132,7 @@
         </div>
     </section>
     {{---- End Work Section -----}}
+    <div class="gray_line"></div>
     <section id = "browse_skills" class="t-b-space">
         <div class="container">
             <h2 class="section_title">Browse Top Skills</h2>

@@ -19,12 +19,22 @@
                     <div class="col-sm-12 col-md-12 col-md-offset-0">
                         <div class="collapse navbar-collapse" id="visitor-nav">
                             <ul id = "right_nav" class="nav navbar-nav navbar-right has-right-menu">
-                                <li><a href="">How it works</a></li>
-                                <li><a href="/login">Login</a></li>
+                                @if(Request::is('how-it-works/client'))
+                                    <li><a href="/how-it-works/freelancer">How it works</a></li>
+                                @elseif(Request::is('how-it-works/freelancer'))
+                                    <li><a href="/how-it-works/client">How it works</a></li>
+                                @else
+                                    <li><a href="/how-it-works/client">How it works</a></li>
+                                @endif
+                                <li><a href="/signin">Login</a></li>
                                 <li><a href="/signup">Signup</a></li>
                             </ul>
                             <div id = "left_nav" class="nav navbar-nav navbar-left">
-                                <div class = "logo"><img src="{{ asset('/images/fullance.jpg') }}" alt=""></div>
+                                <div class = "logo">
+                                    <a href="/">
+                                        <img src="{{ asset('/images/fullance.jpg') }}" alt="">
+                                    </a>
+                                </div>
                                 <div class = "search-input">
                                     <form action="" method="get">
                                         <i class="fa fa-search"></i>
@@ -43,6 +53,9 @@
             @yield('content')
         </div>
 
+        <div id = "move_to_top">
+            <span><i class="fa fa-arrow-up"></i></span>
+        </div>
         {{--Footer--}}
         <footer class="page-footer">
             <div class="container">

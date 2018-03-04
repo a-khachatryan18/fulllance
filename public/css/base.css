@@ -1,10 +1,14 @@
 body, html{
     padding: 0;
     margin: 0;
+    font-family: 'Gotham-Light', Arial, sans-serif;
+    color: #494949;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6, .btn{
     font-family: 'Gotham-Medium', Arial, sans-serif;
 }
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6,p{
-    font-family: 'Gotham-Medium', Arial, sans-serif;
+h1,.jumbotron h1{
+    font-size: 50px;
 }
 a{
     color: #37a000;
@@ -12,17 +16,26 @@ a{
 }
 @font-face{
     font-family: 'Gotham-Medium';
-    src: url('./fontsGotham-Medium.eot');
-    src: url('./fontsGotham-Medium.eot') format('eot'),
+    src: url('./fonts/Gotham-Medium.eot');
+    src: url('./fonts/Gotham-Medium.eot') format('eot'),
     url('./fonts/Gotham-Medium.woff') format('woff'),
-    url('./fontsGotham-Medium.ttf') format('truetype');
-    /*url('Gotham-Medium.svg') format('svg')*/
+    url('./fonts/Gotham-Medium.ttf') format('truetype');
 }
-a:hover{
+@font-face {
+    font-family: 'Gotham-Light';
+    src: url('./fonts/Gotham-Light.eot');
+    src: url('./fonts/Gotham-Light.eot') format('eot'),
+    url('./fonts/Gotham-Light.woff') format('woff'),
+    url('./fonts/Gotham-Light.ttf') format('truetype');
+}
+a:hover, a:focus{
     text-decoration: none;
+    color: #37a000;
 }
 ul{
     margin-bottom: 0;
+    list-style: none;
+    padding-left: 16px;
 }
 .form-horizontal .form-group {
     margin: 0 0 20px;
@@ -33,11 +46,41 @@ ul{
     -webkit-box-shadow: none;
     box-shadow: none;
 }
-.t-b-space{
-    padding: 50px;
+.clearfix{
+    display: block;
+    content: "";
+    clear: both;
+}
+.m-t-110{
+    margin-top: 100px;
 }
 .m-t-20{
     margin-top: 20px;
+}
+.m-t-70{
+    margin-top: 70px;
+}
+.m-b-30{
+    margin-bottom: 30px;
+}
+.m-b-70{
+    margin-bottom: 70px;
+}
+.p-t-70{
+    padding-top: 70px;
+}
+.p-b-70{
+    padding-bottom: 70px;
+}
+.jumbotron p{
+    font-size: 16px;
+    margin-bottom: 24px;
+}
+.t-b-space{
+    padding: 50px;
+}
+.text-short{
+    font-size: 14px;
 }
 .sm-line{
     width: 80px;
@@ -49,6 +92,35 @@ ul{
     position: relative;
     top:-3px;
 }
-.invalid_input{
-    border-color: red;
+.form_error{
+    border-color: #d50000!important;
+}
+.error_message{
+    margin-top: 10px;
+    font-size: 12px;
+    display: block;
+    padding-left: 24px;
+    color: #d50000;
+    font-family: 'Gotham-Medium', Arial, sans-serif;
+}
+.medium-password{
+    display: block;
+    margin-top: 5px;
+    height: 5px;
+    width:50%;
+    background: orangered;
+}
+.strong-password{
+    display: block;
+    margin-top: 5px;
+    height: 5px;
+    width:100%;
+    background: green;
+}
+.weak-password{
+    display: block;
+    margin-top: 5px;
+    height: 5px;
+    width:30%;
+    background: red;
 }
