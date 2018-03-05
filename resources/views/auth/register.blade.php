@@ -332,11 +332,11 @@
                                                 <div class="form-group text-center">
                                                     <i class="fa fa-code"></i>
                                                     <input id="captcha" type="text" class="form-control" placeholder="Enter the text below" name="captcha" value="">
-                                                    <span id = "refresh_img">
-                                                    <i class="fa fa-refresh"></i>
-                                                </span>
-                                                    <img src="/get_captcha" alt="" id = "captcha_img">
                                                     <span class="error_message"></span>
+                                                    <span id = "refresh_img">
+                                                        <i class="fa fa-refresh"></i>
+                                                    </span>
+                                                    <img src="/get_captcha" alt="" id = "captcha_img" class="{{session()->get('captcha')}}">
                                                 </div>
                                             </div>
                                         </div>

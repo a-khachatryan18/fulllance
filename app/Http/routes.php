@@ -23,6 +23,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('signin', ['as'=>'signup','uses'=>'Auth\AuthController@showSignin']);
     Route::post('signup_user', ['as'=>'signup_user','uses'=>'Auth\AuthController@signup_user']);
     Route::post('checkEmail', ['as'=>'checkEmail','uses'=>'Auth\AuthController@checkEmail']);
+    Route::post('checkCaptcha', ['as'=>'checkCaptcha','uses'=>'Auth\AuthController@checkCaptcha']);
+    Route::post('checkUsername', ['as'=>'checkUsername','uses'=>'Auth\AuthController@checkUsername']);
     Route::get('get_captcha', ['as'=>'get_captcha','uses'=>'Auth\AuthController@get_captcha']);
 
 });

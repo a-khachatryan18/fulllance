@@ -7,6 +7,7 @@ use App\User;
 use App\Models\Clients;
 use App\Models\Freelancers;
 use Validator;
+use Session;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -59,9 +60,8 @@ class AuthController extends Controller
 
     public function checkEmail(Request $request){
         $email = $request->email;
-//        print($email);
         $validator = Validator::make($request->all(), [
-            'email' => 'email|unique:freelancers,email|unique:clients,email'
+            'email' => 'email|unique:freelancers,email|unique:clients'
         ]);
 
         if ($validator->fails()) {
@@ -73,7 +73,62 @@ class AuthController extends Controller
                 'message' => $errors
             ]);
         }
+    }
+    public function checkUsername(Request $request){
+        $username = $request->username;
 
+        $validator = Validator::make($request->all(), [
+            'username' => 'unique:freelancers'
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            $errors =  json_decode($errors);
+
+            return response()->json([
+                'success' => false,
+                'message' => $errors
+            ]);
+        }
+    }
+
+    public function get_captcha(){
+
+        $string = '';
+        for ($i = 0; $i < 6; $i++) {
+            $string .= chr(rand(97, 122));
+        }
+        Session::put('captcha', $string);
+        Session::save();
+        $image = imagecreatetruecolor(200, 80);
+        $font_path = public_path("/css/fonts/PlAGuEdEaTH.ttf");
+        $color = imagecolorallocate($image, 51, 51, 51);
+        $white = imagecolorallocate($image, 211, 211, 211);
+        imagefilledrectangle($image,0,0,399,99,$white);
+        imagettftext ($image, 30, 0, 60, 50, $color, $font_path, Session::get('captcha'));
+        header("Content-type: image/png");
+        imagepng($image);
+    }
+    public function checkCaptcha(Request $request){
+        $captcha = $request->captcha;
+
+        $rightCaptcha = $request->session()->get('captcha');
+        if(strtolower($captcha) == strtolower($rightCaptcha)){
+            return response()->json([
+                'success' => false,
+                'message' => 'Valid',
+                'ssss' => session()->all()
+//                'ssss' => $rightCaptcha
+            ]);
+        }
+        else{
+            return response()->json([
+                'success' => false,
+                'message' => "Text doesn't match. Try again!",
+//                'ssss' => $rightCaptcha
+                'ssss' => session()->all()
+            ]);
+        }
     }
     public function signup_user(Request $request){
         $data = $request->all();
@@ -83,6 +138,7 @@ class AuthController extends Controller
         $email = $request->email;
         $location = $request->location;
         $password = $request->password;
+        $username = $request->username;
         $notify = $request->notify_me;
         if($user_type === 'client'){
             $model = new Clients();
@@ -101,6 +157,7 @@ class AuthController extends Controller
             $model->email = $email;
             $model->password = bcrypt($password);
             $model->country = $location;
+            $model->username = $username;
             $model->notify = $notify;
             $model->save();
         }
@@ -114,21 +171,7 @@ class AuthController extends Controller
         return view('auth.login', ['data' => $data]);
     }
 
-    public function get_captcha(){
-        $string = '';
-        for ($i = 0; $i < 6; $i++) {
-            $string .= chr(rand(97, 122));
-        }
-        session(['captcha' => $string]);
-        $image = imagecreatetruecolor(200, 80);
-        $font_path = public_path("/css/fonts/PlAGuEdEaTH.ttf");
-        $color = imagecolorallocate($image, 51, 51, 51);
-        $white = imagecolorallocate($image, 211, 211, 211);
-        imagefilledrectangle($image,0,0,399,99,$white);
-        imagettftext ($image, 30, 0, 60, 50, $color, $font_path, session('captcha'));
-        header("Content-type: image/png");
-        imagepng($image);
-    }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [

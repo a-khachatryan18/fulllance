@@ -42,27 +42,100 @@ $(function() {
         var form_valid = true;
         var country = $('#location');
         var password = $('#password');
+        var username = $('#username');
+        var captcha = $('#captcha');
+        var valid_captcha = true;
+        var valid_username = true;
         var user_type = $('#user_type');
         if(user_type.val() === ''){
             user_type.next().text('You should choose what you want to do');
+            form_valid = false;
+        }
+        else{
+            user_type.next().text('');
         }
         if(country.val() === ''){
             $('#country_error').text('Country is required');
             form_valid = false;
         }
+        else{
+            country.removeClass('form_error');
+            country.next().text('');
+        }
         if(password.val() === ''){
+            password.addClass('form_error');
             password.next().text('Password is required');
             form_valid = false;
         }
+        else{
+            password.removeClass('form_error');
+            password.next().text('');
+        }
         if($('#terms').is(':checked')){
             form_valid = true;
+            $('#terms_error').text('');
         }
         else{
             $('#terms_error').text('You should accept our terms');
             form_valid = false;
         }
-        if(form_valid){
-           $('#signup_form').submit();
+        if(captcha.val() !== ''){
+            $.ajax({
+                type:'POST',
+                url:'/checkCaptcha',
+                data: {captcha : captcha.val()},
+                headers: {'X-CSRF-TOKEN': $('input[name="_token"]').val()},
+                async: false,
+                success:function(data){
+                    if(data.success === false){
+                        captcha.addClass('form_error');
+                        captcha.next().text(data.message);
+                        valid_captcha = false;
+                    }
+                    else{
+                        captcha.removeClass('form_error');
+                        captcha.next().text('');
+                        valid_captcha = true;
+                    }
+                }
+            });
+        }
+        else{
+            captcha.addClass('form_error');
+            captcha.next().text('Captcha is required');
+            form_valid = false;
+        }
+
+        if(username.val() !== ''){
+            $.ajax({
+                type:'POST',
+                url:'/checkUsername',
+                data: {username : username.val()},
+                headers: {'X-CSRF-TOKEN': $('input[name="_token"]').val()},
+                async: false,
+                success:function(data){
+                    if(data.success === false){
+                        username.addClass('form_error');
+                        username.next().text(data.message.username);
+                        valid_username = false;
+                    }
+                    else{
+                        username.removeClass('form_error');
+                        username.next().text('');
+                        valid_username = true;
+                    }
+                }
+            });
+        }
+        else{
+            username.addClass('form_error');
+            username.next().text('Username is required');
+            form_valid = false;
+        }
+
+        console.log(valid_username,valid_captcha,form_valid);
+        if(form_valid && valid_username && valid_captcha){
+           // $('#signup_form').submit();
         }
     });
     $('#refresh_img i').on('click', function(e)

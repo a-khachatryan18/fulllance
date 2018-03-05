@@ -39,7 +39,7 @@
 }
 #freelancer_fields{
     top: 20px;
-    display:block;
+    display:none;
     clear: both;
     position: relative;
     overflow: auto;
