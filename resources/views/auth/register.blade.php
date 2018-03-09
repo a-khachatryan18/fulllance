@@ -331,12 +331,10 @@
                                             <div class="col-md-12">
                                                 <div class="form-group text-center">
                                                     <i class="fa fa-code"></i>
-                                                    <input id="captcha" type="text" class="form-control" placeholder="Enter the text below" name="captcha" value="">
+                                                    <input class="form-control" type="text" id="captcha" placeholder="Enter the text below" name="captcha">
                                                     <span class="error_message"></span>
-                                                    <span id = "refresh_img">
-                                                        <i class="fa fa-refresh"></i>
-                                                    </span>
-                                                    <img src="/get_captcha" alt="" id = "captcha_img" class="{{session()->get('captcha')}}">
+                                                    {!! captcha_img('flat') !!}
+                                                    <a href="javascript:void(0)" id="regen-captcha"><i class = "fa fa-refresh"></i></a>
                                                 </div>
                                             </div>
                                         </div>

@@ -5,9 +5,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <div class="panel panel-default">
+                <div class="panel panel-default login_wrapper">
                     <div class="panel-body login_content">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login_user') }}">
+                        <form class="form-horizontal" id="login_form" role="form" method="POST" action="{{ url('/login_user') }}">
                             {{ csrf_field() }}
                             <div class="text-center panel_title">
                                 <h2>Log In and get to work</h2>
@@ -17,6 +17,7 @@
                                     <div class="form-group">
                                         <i class="fa fa-user"></i>
                                         <input id="username" type="text" placeholder="Username or Email" class="form-control" name="username" value="{{ old('username') }}">
+                                        <span class="error_message"></span>
                                         @if ($errors->has('username'))
                                             <span class="help-block">
                                                 <strong>{{ $errors->first('username') }}</strong>
@@ -25,12 +26,11 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <i class="fa fa-lock"></i>
                                     <input id="password" type="password"  placeholder="Password" class="form-control" name="password">
+                                    <span class="error_message"></span>
                                     @if ($errors->has('password'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('password') }}</strong>
@@ -56,8 +56,10 @@
 
                             <div class="col-md-12 text-center">
                                 <h4>Log In as:</h4>
-                                <span class="user_type btn btn-default">Hire for a project</span>
-                                <span class="user_type btn btn-default">Work as a freelancer</span>
+                                <span class="user_type btn btn-default" data-type = "client">Hire for a project</span>
+                                <span class="user_type btn btn-default" data-type = "freelancer">Work as a freelancer</span>
+                                <input type="hidden" name = 'user_type' id = "user_type">
+                                <span class="error_message" id = "usertype_error"></span>
                             </div>
                             <div class="form-group">
                                 <div class="text-center">

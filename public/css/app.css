@@ -31,7 +31,11 @@
     background: #f9f9f9;
 }
 #signup_page .panel_title h2{
-    margin: 20px 0 12px 0;
+    margin: 20px 0 20px 0;
+}
+#signin_page .panel_title h2{
+    margin-bottom: 30px;
+    margin-top: 0;
 }
 #user_email{
     margin-bottom: 28px;
@@ -53,7 +57,7 @@
     left: -5px;
     font-size: 20px;
 }
-.signup_container{
+.signup_container,.login_wrapper{
     position: relative;
     background-color: #fff;
     padding: 30px;
@@ -94,4 +98,8 @@
     box-shadow: 0 1px 3px rgba(57,73,76,.35);
     border-color: transparent;
 }
-
+#regen-captcha i{
+    top: 60px;
+    left: 25%;
+    font-size: 20px;
+}

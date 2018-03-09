@@ -36,6 +36,20 @@ $(function() {
        $(this).removeClass('form_error');
        $(this).next().text('');
     });
+    $('#regen-captcha').on('click', function(e){
+        e.preventDefault();
+
+        var anchor = $(this);
+        var captcha = anchor.prev('img');
+
+        $.ajax({
+            type: "GET",
+            url: '/regen_captcha',
+        }).done(function( msg ) {
+            captcha.attr('src', msg);
+        });
+    });
+
     $('#signup_step2').click(function(event){
         event.preventDefault();
         event.stopPropagation();
@@ -79,28 +93,7 @@ $(function() {
             $('#terms_error').text('You should accept our terms');
             form_valid = false;
         }
-        if(captcha.val() !== ''){
-            $.ajax({
-                type:'POST',
-                url:'/checkCaptcha',
-                data: {captcha : captcha.val()},
-                headers: {'X-CSRF-TOKEN': $('input[name="_token"]').val()},
-                async: false,
-                success:function(data){
-                    if(data.success === false){
-                        captcha.addClass('form_error');
-                        captcha.next().text(data.message);
-                        valid_captcha = false;
-                    }
-                    else{
-                        captcha.removeClass('form_error');
-                        captcha.next().text('');
-                        valid_captcha = true;
-                    }
-                }
-            });
-        }
-        else{
+        if(captcha.val() === ''){
             captcha.addClass('form_error');
             captcha.next().text('Captcha is required');
             form_valid = false;
@@ -133,9 +126,30 @@ $(function() {
             form_valid = false;
         }
 
-        console.log(valid_username,valid_captcha,form_valid);
-        if(form_valid && valid_username && valid_captcha){
-           // $('#signup_form').submit();
+        if(form_valid && valid_username){
+            $.ajax({
+                type:'POST',
+                url:'/checkCaptcha',
+                data: {captcha : captcha.val()},
+                headers: {'X-CSRF-TOKEN': $('input[name="_token"]').val()},
+                async: false,
+                success:function(data){
+                    if(data.success === false){
+                        captcha.addClass('form_error');
+                        captcha.next().text(data.message);
+                        valid_captcha = false;
+                    }
+                    else{
+                        captcha.removeClass('form_error');
+                        captcha.next().text('');
+                        valid_captcha = true;
+                    }
+                }
+            });
+            if(valid_captcha){
+                $('#signup_form').submit();
+            }
+
         }
     });
     $('#refresh_img i').on('click', function(e)
@@ -155,6 +169,46 @@ $(function() {
         }
 
     });
+
+    $('#signin_user').click(function(event){
+        event.preventDefault();
+        event.stopPropagation();
+        var user_type = $('#user_type');
+        var username = $('#username');
+        var password = $('#password');
+        var form_valid = true;
+        if(user_type.val() === ''){
+            user_type.next().text('You should choose what you want to do');
+            form_valid = false;
+        }
+        else{
+            user_type.next().text('');
+        }
+        if(username.val() === ''){
+            username.addClass('form_error');
+            username.next().text('Username is required');
+            form_valid = false;
+        }
+        else{
+            username.removeClass('form_error');
+            username.next().text('');
+        }
+        if(password.val() === ''){
+            password.addClass('form_error');
+            password.next().text('Password is required');
+            form_valid = false;
+        }
+        else{
+            password.removeClass('form_error');
+            password.next().text('');
+        }
+        if(form_valid){
+            $('#login_form').submit();
+        }
+
+    });
+
+
     $('#signup_step1').click(function(event){
         event.preventDefault();
         event.stopPropagation();

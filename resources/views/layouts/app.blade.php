@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="{{ asset('/css/select2.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('/font-awesome/css/font-awesome.min.css') }}">
+
     </head>
     <body id="app-layout">
         <nav class="navbar navbar-static-top">
@@ -35,13 +36,15 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <p class="navbar-text text-right">
-                                <span class="hidden-xs">Already have an account?</span>
-                                <strong class="hidden-lg hidden-md hidden-sm visible-xs-inline-block p-md-right">Create account</strong>
-                                <a href="/signin" target="_self">
-                                    Log In
-                                </a>
-                            </p>
+                            @if(url()->current() === 'signup')
+                                <p class="navbar-text text-right">
+                                    <span class="hidden-xs">Already have an account?</span>
+                                    <strong class="hidden-lg hidden-md hidden-sm visible-xs-inline-block p-md-right">Create account</strong>
+                                    <a href="/signin" target="_self">
+                                        Log In
+                                    </a>
+                                </p>
+                            @endif
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
