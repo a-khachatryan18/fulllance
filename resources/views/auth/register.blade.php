@@ -328,17 +328,16 @@
                                                     <span class="error_message"></span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group text-center">
-                                                    <i class="fa fa-code"></i>
-                                                    <input class="form-control" type="text" id="captcha" placeholder="Enter the text below" name="captcha">
-                                                    <span class="error_message"></span>
-                                                    {!! captcha_img('flat') !!}
-                                                    <a href="javascript:void(0)" id="regen-captcha"><i class = "fa fa-refresh"></i></a>
-                                                </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group text-center">
+                                                <i class="fa fa-code"></i>
+                                                <input class="form-control" type="text" id="captcha" placeholder="Enter the text below" name="captcha">
+                                                <span class="error_message"></span>
+                                                {!! captcha_img('flat') !!}
+                                                <a href="javascript:void(0)" id="regen-captcha"><i class = "fa fa-refresh"></i></a>
                                             </div>
                                         </div>
-
                                         <div class="col-md-12 m-t-20">
                                             <div class="form-group">
                                                 <input id="notify_me" type="checkbox" name="notify_me" checked>

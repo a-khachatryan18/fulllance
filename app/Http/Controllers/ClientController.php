@@ -12,6 +12,6 @@ namespace App\Http\Controllers;
 class ClientsController extends Controller
 {
     public function jobs_home(){
-
+        echo "Client logged in";
     }
 }

@@ -5,7 +5,7 @@ $(function() {
     //     }
     // });
 
-    $('#location').select2();
+    $('#location').select2({ width: '100%' });
 
     $('#password').on('input', function () {
 
@@ -98,32 +98,36 @@ $(function() {
             captcha.next().text('Captcha is required');
             form_valid = false;
         }
+        console.log(user_type.val());
+        if(user_type.val() !== '' && user_type.val() === 'freelancer'){
 
-        if(username.val() !== ''){
-            $.ajax({
-                type:'POST',
-                url:'/checkUsername',
-                data: {username : username.val()},
-                headers: {'X-CSRF-TOKEN': $('input[name="_token"]').val()},
-                async: false,
-                success:function(data){
-                    if(data.success === false){
-                        username.addClass('form_error');
-                        username.next().text(data.message.username);
-                        valid_username = false;
+            if(username.val() !== ''){
+                $.ajax({
+                    type:'POST',
+                    url:'/checkUsername',
+                    data: {username : username.val()},
+                    headers: {'X-CSRF-TOKEN': $('input[name="_token"]').val()},
+                    async: false,
+                    success:function(data){
+                        if(data.success === false){
+                            username.addClass('form_error');
+                            username.next().text(data.message.username);
+                            valid_username = false;
+                        }
+                        else{
+                            username.removeClass('form_error');
+                            username.next().text('');
+                            valid_username = true;
+                        }
                     }
-                    else{
-                        username.removeClass('form_error');
-                        username.next().text('');
-                        valid_username = true;
-                    }
-                }
-            });
-        }
-        else{
-            username.addClass('form_error');
-            username.next().text('Username is required');
-            form_valid = false;
+                });
+            }
+            else{
+                username.addClass('form_error');
+                username.next().text('Username is required');
+                form_valid = false;
+            }
+
         }
 
         if(form_valid && valid_username){

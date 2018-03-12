@@ -7,6 +7,11 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default login_wrapper">
                     <div class="panel-body login_content">
+                        @if(Session::has('verified'))
+                            <div class="alert alert-success">
+                                {!!Session::get('verified')!!}
+                            </div>
+                        @endif
                         <form class="form-horizontal" id="login_form" role="form" method="POST" action="{{ url('/login_user') }}">
                             {{ csrf_field() }}
                             <div class="text-center panel_title">

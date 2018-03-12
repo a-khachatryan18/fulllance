@@ -40,14 +40,6 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'freelancer' => [
-            'driver' => 'session',
-            'provider' => 'freelancers',
-        ],
-        'client' => [
-            'driver' => 'session',
-            'provider' => 'clients',
-        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -75,15 +67,7 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
-        ],
-        'clients' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Clients::class,
-        ],
-        'freelancers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Freelancers::class,
-        ],
+        ]
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -115,17 +99,7 @@ return [
             'email' => 'auth.emails.password',
             'table' => 'password_resets',
             'expire' => 60,
-        ],
-        'clients' => [
-            'provider' => 'clients',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
-        'freelancers' => [
-            'provider' => 'freelancers',
-            'table' => 'password_resets',
-            'expire' => 60,
-        ],
+        ]
     ],
 
 ];

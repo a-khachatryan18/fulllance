@@ -6,7 +6,7 @@
         <p><strong>Welcome to Fulllance!</strong> We are glad that you are here.</p>
         <p>
             Please follow the link below to
-            <a href="{{ URL::to('signup/verify/' .$data['type']. '/'.$data['confirmation_code']) }}">verify</a> your email address
+            <a href="{{ URL::to('signup/verify/'.$data['confirmation_code']) }}">verify</a> your email address
         </p>
     </div>
 @endsection

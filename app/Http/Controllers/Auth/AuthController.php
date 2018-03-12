@@ -36,6 +36,8 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/';
 
+    protected $redirectAfterLogout = '/signin';
+
     /**
      * Create a new authentication controller instance.
      *
@@ -63,7 +65,7 @@ class AuthController extends Controller
     public function checkEmail(Request $request){
         $email = $request->email;
         $validator = Validator::make($request->all(), [
-            'email' => 'email|unique:freelancers,email|unique:clients'
+            'email' => 'email|unique:users'
         ]);
 
         if ($validator->fails()) {
@@ -80,7 +82,7 @@ class AuthController extends Controller
         $username = $request->username;
 
         $validator = Validator::make($request->all(), [
-            'username' => 'unique:freelancers'
+            'username' => 'unique:users'
         ]);
 
         if ($validator->fails()) {
@@ -120,7 +122,7 @@ class AuthController extends Controller
         $remember = (isset($request->remember) && !empty($request->remember)) ? true : false;
 
         if($remember){
-            if (Auth::guard($user_type)->attempt(['username'=> $username, 'password' => $password], $remember)) {
+            if (Auth::attempt(['username'=> $username, 'password' => $password], $remember)) {
                 if($user_type === 'freelancer'){
                     $this->redirectTo = '/find-work';
                 }
@@ -129,7 +131,7 @@ class AuthController extends Controller
                 }
                 return redirect()->intended($this->redirectTo);
             }
-            elseif (Auth::guard($user_type)->attempt(['email'=> $username, 'password' => $password], $remember)) {
+            elseif (Auth::attempt(['email'=> $username, 'password' => $password], $remember)) {
                 if($user_type === 'freelancer'){
                     $this->redirectTo = '/find-work';
                 }
@@ -139,11 +141,11 @@ class AuthController extends Controller
                 return redirect()->intended($this->redirectTo);
             }
             else {
-                echo "fail!";
+                return redirect()->back()->withInput();
             }
         }
         else{
-            if (Auth::guard($user_type)->attempt(['username'=> $username, 'password' => $password])) {
+            if (Auth::attempt(['username'=> $username, 'password' => $password])) {
                 if($user_type === 'freelancer'){
                     $this->redirectTo = '/find-work';
                 }
@@ -152,7 +154,7 @@ class AuthController extends Controller
                 }
                 return redirect()->intended($this->redirectTo);
             }
-            elseif (Auth::guard($user_type)->attempt(['email'=> $username, 'password' => $password])) {
+            elseif (Auth::attempt(['email'=> $username, 'password' => $password])) {
                 if($user_type === 'freelancer'){
                     $this->redirectTo = '/find-work';
                 }
@@ -162,7 +164,7 @@ class AuthController extends Controller
                 return redirect()->intended($this->redirectTo);
             }
             else {
-                echo "fail!";
+                return redirect()->back()->withInput();
             }
         }
 
@@ -178,61 +180,39 @@ class AuthController extends Controller
         $username = $request->username;
         $notify = $request->notify_me;
         $confirmation_code = str_random(30);
-        if($user_type === 'client'){
-            $model = new Clients();
-            $model->first_name = $first_name;
-            $model->last_name = $last_name;
-            $model->email = $email;
-            $model->country = $location;
-            $model->password = bcrypt($password);
-            $model->notify = $notify;
-            $model->confirmation_code = $confirmation_code;
-            $model->save();
-        }
-        else{
-            $model = new Freelancers();
+            $model = new User();
             $model->first_name = $first_name;
             $model->last_name = $last_name;
             $model->email = $email;
             $model->password = bcrypt($password);
             $model->country = $location;
             $model->username = $username;
+            $model->role = $user_type;
             $model->confirmation_code = $confirmation_code;
             $model->notify = $notify;
 
             $model->save();
-        }
         $data = array(
             'confirmation_code' => $confirmation_code,
             'type' => $user_type,
             'name' => $first_name
         );
-        Mail::send('emails.signup', array('data' => $data), function($message)
-        {
+        Mail::send('emails.signup', ['data' => $data] , function ($message) use ($data) {
             $message->from('necastacompany@gmail.com', 'Fulllance');
-//            $message->to('arevikkhachatryan068@gmail.com')->subject('Welcome to Fulllance!');
-            $message->to($email)->subject('Welcome to Fulllance!');
+            $message->to('arevikkhachatryan068@gmail.com')->subject('Welcome to Fulllance!');
+//            $message->to($email)->subject('Welcome to Fulllance!');
         });
-
+        die;
         return redirect('/signin');
     }
 
-    public function verify($type, $confirmation_code){
-        if( !isset($confirmation_code) || !isset($type))
+    public function verify($confirmation_code){
+        if( !isset($confirmation_code))
         {
             return redirect('signin');
         }
-        if($type === 'client'){
-            $user = Clients::where('confirmation_code',$confirmation_code)->first();
-        }
-        elseif($type === 'freelancer'){
-            $user = Freelancers::where('confirmation_code',$confirmation_code)->first();
-        }
-        else{
-            return redirect('signin');
-        }
 
-//        dd($user,$type);
+        $user = User::where('confirmation_code',$confirmation_code)->first();
 
         if ( ! $user)
         {
@@ -243,9 +223,9 @@ class AuthController extends Controller
         $user->confirmation_code = null;
         $user->save();
 
-        Session::flash('You have successfully verified your account.');
-
-        return Redirect::route('signin');
+        Session::flash('verified','You have successfully verified your account.');
+        $verified = 'You have successfully verified your account.';
+        return redirect('signin')->with('verified', $verified);
     }
     public function showSignin()
     {
@@ -254,6 +234,10 @@ class AuthController extends Controller
         return view('auth.login', ['data' => $data]);
     }
 
+    public function logout(){
+        Auth::logout();
+        return redirect('/signin');
+    }
 
     protected function validator(array $data)
     {

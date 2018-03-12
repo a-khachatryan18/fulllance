@@ -54,8 +54,17 @@ ul{
 .m-t-110{
     margin-top: 100px;
 }
+.m-t-50{
+    margin-top: 50px;
+}
 .m-t-20{
     margin-top: 20px;
+}
+.m-t-10{
+    margin-top: 10px;
+}
+.m-t-30{
+    margin-top: 30px;
 }
 .m-t-70{
     margin-top: 70px;
@@ -65,6 +74,9 @@ ul{
 }
 .m-b-70{
     margin-bottom: 70px;
+}
+.p-l-10{
+    padding-left: 10px;
 }
 .p-t-70{
     padding-top: 70px;
