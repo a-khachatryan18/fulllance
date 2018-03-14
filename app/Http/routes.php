@@ -31,9 +31,14 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('regen_captcha', function(){
         return captcha_src();
     });
+    Route::get('login', function(){
+        return redirect('/signin');
+    });
 });
 Route::group(['middleware' => 'auth'], function () {
     Route::get('find-work', ['as'=>'find_work','uses'=>'FreelancerController@find_work']);
     Route::get('jobs-home', ['as'=>'jobs_home','uses'=>'ClientController@jobs_home']);
+    Route::get('freelancer/settings', 'UserSettingsController@settings');
+    Route::get('client/settings', 'UserSettingsController@client_settings');
 });
 

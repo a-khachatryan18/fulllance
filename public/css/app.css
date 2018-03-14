@@ -42,6 +42,9 @@
     background: none;
     color: #37a000;
 }
+#app-layout .navbar-nav li a:focus{
+    background-color: transparent;
+}
 #app-layout .navbar-right li a i{
     font-size: 20px;
 }
@@ -86,12 +89,54 @@
 .search-input{
     margin-top: 8px;
 }
-.job-feed .sub_header{
+.left_wrapper #topic_list li.active a:after{
+    content: " ";
+    position: absolute;
+    border-left: 4px solid #37a000;
+    left: 0;
+    right: auto;
+    bottom: 0;
+    top: 0;
+}
+.job_categories ul li a{
+    line-height: 28px;
+}
+.left_wrapper #topic_list li.active a{
+    background-color: #f9f9f9;
+    border-left-width: 0!important;
+    color: #37a000;
+    padding: 9px 20px;
+    text-decoration: none;
+    font-weight: 700;
+}
+.left_wrapper #topic_list li a{
+    color: #222;
+    padding: 6px 15px;
+    font-family: "Gotham Medium", Helvetica, Arial, sans-serif;
+}
+#job-feed .sub_header h3{
+    font-size: 22px;
+    font-family: "Gotham-Light",Helvetica,Arial,sans-serif;
+}
+#no_joblist h3{
+    line-height: 27px;
+    font-size: 21px;
+    font-weight: 400;
+}
+#job-feed .sub_header{
     border-bottom: 1px solid #e0e0e0;
     padding: 30px;
     background-color: #f9f9f9;
 }
-.job-feed{
+#job-feed .job_list{
+    background: #fff;
+}
+#job-feed .feed_footer{
+    border-top: 1px solid #e0e0e0;
+    padding: 30px;
+    background-color: #f9f9f9;
+}
+#job-feed{
     position: relative;
     padding:0;
     box-shadow: 0 1px 6px rgba(57,73,76,.35);

@@ -19,7 +19,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group m-b-0">
                                         <i class="fa fa-user"></i>
                                         <input id="username" type="text" placeholder="Username or Email" class="form-control" name="username" value="{{ old('username') }}">
                                         <span class="error_message"></span>

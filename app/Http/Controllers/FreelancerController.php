@@ -14,7 +14,7 @@ class FreelancerController extends Controller
 
     public function find_work(){
 
-        $data['title'] = 'Create an account - Fulllance';
+        $data['title'] = 'My job feed - Fulllance';
         $user = Auth::user();
 //        dd($user);
         return view('freelancer.find-work', ['data' => $data]);

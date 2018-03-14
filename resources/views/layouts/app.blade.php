@@ -139,7 +139,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href=""><i class="fa fa-cog"></i><span class="p-l-10">Settings</span></a>
+                                        <a href="{{ (Auth::user()->role == 'client') ? '/client/settings' : '/freelancer/settings' }}"><i class="fa fa-cog"></i><span class="p-l-10">Settings</span></a>
                                     </li>
                                     <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i><span class="p-l-10">Logout</span></a></li>
                                 </ul>
