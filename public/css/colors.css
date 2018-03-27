@@ -20,7 +20,7 @@
     background-color: #fff;
 }
 .category_item:hover .rounded i, .category_item:hover .category_name{
-    color: #37a000;
+    color: #205d00;
 }
 .step_name{
     color: #4e4949;
@@ -32,20 +32,20 @@
     color: #7b7b7b;
 }
 .skill_name:hover{
-    color: #37a000;
+    color: #205d00;
 }
 .text_green{
-    color: #37a000;
+    color: #205d00;
 }
 #browse_skills{
     background: #f9f9f9
 }
 .bg-grass {
-    background-color: #5bbc2e;
+    background-color: #205d00;
 }
 #hero_signup .action_btn:hover{
     background: #FFFFFF;
-    color: #37a000;
+    color: #205d00;
 }
 #hero_signup h2{
     color: #FFFFFF;
@@ -56,5 +56,5 @@
 }
 .green_line{
     height: 3px;
-    background-color: #5bbc2e;
+    background-color: #205d00;
 }

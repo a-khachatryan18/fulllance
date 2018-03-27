@@ -128,7 +128,7 @@
                                     <li>
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                             <div class="img_box">
-                                                <img class="profile_img" src="{{ (!empty(Auth::user()->profile_img)) ? asset('uploads/').Auth::user()->profile_img : asset('images/avatar.png')  }}" alt="">
+                                                <img class="profile_img" src="{{ (!empty(Auth::user()->profile_img)) ? asset('uploads/avatars/').Auth::user()->profile_img : asset('images/avatar.png')  }}" alt="">
                                             </div>
                                             <div class="user_info">
                                                 <p>
@@ -239,5 +239,6 @@
         <script src = "{{ asset('/js/select2.min.js') }}"></script>
         <script src = "{{ asset('/js/auth.js') }}"></script>
         <script src = "{{ asset('/js/jquery.validate.min.js') }}"></script>
+        <script src = "{{ asset('/js/app.js') }}"></script>
     </body>
 </html>

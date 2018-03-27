@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 
 
-class ClientsController extends Controller
+class ClientController extends Controller
 {
     public function jobs_home(){
         echo "Client logged in";

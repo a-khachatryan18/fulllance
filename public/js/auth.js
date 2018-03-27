@@ -177,17 +177,9 @@ $(function() {
     $('#signin_user').click(function(event){
         event.preventDefault();
         event.stopPropagation();
-        var user_type = $('#user_type');
         var username = $('#username');
         var password = $('#password');
         var form_valid = true;
-        if(user_type.val() === ''){
-            user_type.next().text('You should choose what you want to do');
-            form_valid = false;
-        }
-        else{
-            user_type.next().text('');
-        }
         if(username.val() === ''){
             username.addClass('form_error');
             username.next().text('Username is required');

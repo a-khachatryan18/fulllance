@@ -19,14 +19,23 @@ ul.social_wrapper{
     padding-left: 20px;
 }
 .btn-primary {
-    color: #fff;
     border-radius: 1px;
-    background-color: #37a000;
     border-color: transparent;
 }
-.btn-primary:hover {
-    background-color: #37a000;
-    border-color: #37a000;
+.btn-success:hover{
+    background-color: #008329;
+}
+.btn-success{
+    border-radius: 1px;
+    background-color: #205d00;
+    border-color: #205d00;
+}
+.progress{
+    background: #a4dd83;
+}
+.progress-bar{
+    background-color: #205d00;
+    line-height: 16px;
 }
 #left_nav{
     padding-top: 15px;
@@ -43,7 +52,7 @@ ul.social_wrapper{
 #right_nav>li>a:focus, #right_nav>li>a:hover {
     text-decoration: none;
     background-color: transparent;
-    color: #37a000;
+    color: #205d00;
 }
 .search-input{
     position: relative;
@@ -54,7 +63,7 @@ ul.social_wrapper{
     position: absolute;
     top:12px;
     left:10px;
-    color: #37a000;
+    color: #205d00;
 }
 input.form-control{
     border-radius: 0px;
@@ -135,14 +144,14 @@ input.form-control:focus, input.form-control:hover {
     font-family: "Gotham Medium",Helvetica,Arial,sans-serif;
     font-weight: 600;
     padding: 8px 38px;
-    color: #37a000;
+    color: #205d00;
     border-radius: 0;
     border: 2px solid #e0e0e0;
     transition: border-color 1s ease;
 }
 .see_more:hover{
-    color: #37a000;
-    border-color: #37a000;
+    color: #205d00;
+    border-color: #205d00;
 }
 .step_image img{
     width: 150px;
@@ -216,7 +225,7 @@ input.form-control:focus, input.form-control:hover {
     float: none;
 }
 .jumbotron .nav-holder .nav-tabs>.active>a, .jumbotron .nav-holder .nav-tabs>.active>a:focus, .jumbotron .nav-holder .nav-tabs>.active>a:hover {
-    color: #37a000;
+    color: #205d00;
     background-color: #fff;
 }
 .jumbotron .nav-holder .nav-tabs>li>a {
@@ -332,7 +341,7 @@ input.form-control:focus, input.form-control:hover {
     vertical-align: middle;
 }
 .nav-links .active a {
-    color: #37a000;
+    color: #205d00;
 }
 .sub-nav-links a {
     color: #494949;
@@ -340,7 +349,7 @@ input.form-control:focus, input.form-control:hover {
 .nav-links .active:after {
     content: "";
     height: 4px;
-    border-bottom: 4px solid #37a000;
+    border-bottom: 4px solid #205d00;
     position: absolute;
     bottom: -1px;
     left: 0;
@@ -376,4 +385,62 @@ input.form-control:focus, input.form-control:hover {
 
 .select2-container--default .select2-search--inline .select2-search__field {
     width: auto !important;
+}
+.checkBox span.checkbox-value{
+    padding-left: 20px;
+}
+.checkBox{
+    position: relative;
+}
+.checkBox [type=checkbox]{
+    float: left;
+    margin-left: -20px;
+    margin-top: 6px;
+    position: absolute;
+    left: -9999px;
+}
+.checkBox .checkbox-replacement i{
+    width: 10px!important;
+    height: 10px!important;
+    line-height: 10px!important;
+    font-size: 10px!important;
+    margin-left: 0!important;
+    margin-right: 0!important;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    color: #fff;
+}
+.checkBox .checkbox-replacement{
+    color: #a0a0a0;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    font-size: 15px;
+    position: relative;
+    top: 3px;
+    background-color: #fff;
+    border: 1px solid #a0a0a0;
+    margin-right: 10px;
+}
+.checkBox [type=checkbox]:checked+.checkbox-replacement{
+    background-color: #37a000;
+    border-color: #37a000;
+}
+.checkBox label:hover{
+    color: #008329;
+}
+.checkBox label:hover [type=checkbox]:checked+.checkbox-replacement{
+    background-color: #008329;
+}
+.checkBox label:hover, .radio label:hover {
+    background-color: #f9f9f9;
+    box-shadow: -30px 0 0 #f9f9f9;
+}
+.checkBox label:hover [type=checkbox]+.checkbox-replacement{
+    color: #008329;
+    border-color: #008329;
+    box-shadow: 0 0 0 1px #008329;
+    transition: transform .3s,box-shadow .3s;
 }

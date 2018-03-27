@@ -118,12 +118,12 @@ class AuthController extends Controller
 
         $username = $request->username;
         $password = $request->password;
-        $user_type = (isset($request->user_type) && !empty($request->user_type)) ? $request->user_type : 'freelancer';
         $remember = (isset($request->remember) && !empty($request->remember)) ? true : false;
 
         if($remember){
             if (Auth::attempt(['username'=> $username, 'password' => $password], $remember)) {
-                if($user_type === 'freelancer'){
+                $user_role = Auth::user()->role;
+                if($user_role === 'freelancer'){
                     $this->redirectTo = '/find-work';
                 }
                 else{
@@ -132,7 +132,8 @@ class AuthController extends Controller
                 return redirect()->intended($this->redirectTo);
             }
             elseif (Auth::attempt(['email'=> $username, 'password' => $password], $remember)) {
-                if($user_type === 'freelancer'){
+                $user_role = Auth::user()->role;
+                if($user_role === 'freelancer'){
                     $this->redirectTo = '/find-work';
                 }
                 else{
@@ -146,7 +147,8 @@ class AuthController extends Controller
         }
         else{
             if (Auth::attempt(['username'=> $username, 'password' => $password])) {
-                if($user_type === 'freelancer'){
+                $user_role = Auth::user()->role;
+                if($user_role === 'freelancer'){
                     $this->redirectTo = '/find-work';
                 }
                 else{
@@ -155,7 +157,8 @@ class AuthController extends Controller
                 return redirect()->intended($this->redirectTo);
             }
             elseif (Auth::attempt(['email'=> $username, 'password' => $password])) {
-                if($user_type === 'freelancer'){
+                $user_role = Auth::user()->role;
+                if($user_role === 'freelancer'){
                     $this->redirectTo = '/find-work';
                 }
                 else{

@@ -40,11 +40,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-7" id = "job-feed">
-                    <div class="sub_header">
+                <div class="col-md-7 air-card" id = "job-feed">
+                    <header>
                         <h3 class="m-b-0 m-t-0">My Job Fead</h3>
-                    </div>
-                    <div class="job_list">
+                    </header>
+                    <section class="job_list">
                         <div id = "no_joblist" class="text-center">
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
@@ -56,7 +56,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </section>
                     <div class = "feed_footer"></div>
                 </div>
                 <div class="col-md-3 right_wrapper">

@@ -1,3 +1,13 @@
+ul.payment_method_info{
+    list-style-type: disc;
+}
+#app-layout{
+    font-family: "GothamSSm",Helvetica,Arial,sans-serif;
+}
+#app-layout select{
+    font-family: "Gotham Medium",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+}
 #app-layout .navbar{
     background: #fff;
     border: none;
@@ -40,7 +50,7 @@
 }
 #app-layout .navbar-nav li a:hover{
     background: none;
-    color: #37a000;
+    color: #205d00;
 }
 #app-layout .navbar-nav li a:focus{
     background-color: transparent;
@@ -89,46 +99,56 @@
 .search-input{
     margin-top: 8px;
 }
-.left_wrapper #topic_list li.active a:after{
+
+.left_wrapper #topic_list li.active a:after,  #settings_menu ul li.active a:after{
     content: " ";
     position: absolute;
-    border-left: 4px solid #37a000;
+    border-left: 4px solid #205d00;
     left: 0;
     right: auto;
     bottom: 0;
     top: 0;
 }
-.job_categories ul li a{
-    line-height: 28px;
-}
-.left_wrapper #topic_list li.active a{
+.left_wrapper #topic_list li.active a, #settings_menu ul li.active a{
     background-color: #f9f9f9;
     border-left-width: 0!important;
-    color: #37a000;
+    color: #205d00;
     padding: 9px 20px;
     text-decoration: none;
     font-weight: 700;
 }
-.left_wrapper #topic_list li a{
-    color: #222;
-    padding: 6px 15px;
-    font-family: "Gotham Medium", Helvetica, Arial, sans-serif;
+.job_categories ul li{
+    margin-bottom: 10px;
 }
-#job-feed .sub_header h3{
+.job_categories ul li a{
+    font-size: 13px;
+}
+.left_wrapper ul{
+    padding-left: 0;
+}
+.left_wrapper #topic_list li a, #settings_menu ul li a{
+    color: #222;
+    font-size: 13px;
+    padding: 6px 15px;
+    font-weight: 500;
+}
+.air-card header h3{
     font-size: 22px;
-    font-family: "Gotham-Light",Helvetica,Arial,sans-serif;
+    font-family: "GothamSSm",Helvetica,Arial,sans-serif;
+    display: inline-block;
 }
 #no_joblist h3{
     line-height: 27px;
     font-size: 21px;
     font-weight: 400;
 }
-#job-feed .sub_header{
+.air-card header{
     border-bottom: 1px solid #e0e0e0;
     padding: 30px;
     background-color: #f9f9f9;
 }
-#job-feed .job_list{
+.air-card section{
+    padding:20px 0;
     background: #fff;
 }
 #job-feed .feed_footer{
@@ -136,7 +156,7 @@
     padding: 30px;
     background-color: #f9f9f9;
 }
-#job-feed{
+.air-card{
     position: relative;
     padding:0;
     box-shadow: 0 1px 6px rgba(57,73,76,.35);
@@ -256,4 +276,51 @@
     top: 60px;
     left: 25%;
     font-size: 20px;
+}
+/************** Modals ****************/
+#billing_modal .protected_note img{
+    height: 23px;
+}
+#billing_modal .method_type{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#billing_modal .protected_note{
+    padding: 7px 0;
+    background-color: #EBF7EC;
+}
+#billing_modal .cards_img img{
+    width:125px;
+}
+#payment_modal .payment_card{
+    width: 140px;
+}
+.eo-button-box h3{
+    color: #656565;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+}
+.eo-button-box {
+    position: relative;
+    vertical-align: top;
+    text-align: center;
+    height: 100%;
+    min-height: 130px;
+    border-radius: 2px;
+    border: 0 solid transparent;
+    padding: 15px;
+    box-shadow: 0 1px 6px rgba(57,73,76,.35);
+}
+#notification_settings .dropdown .arrow_down{
+    float: right;
+    color: #205d00;
+}
+#notification_settings .dropdown button{
+    min-width: 90%;
+    text-align: left;
+}
+#notification_settings .dropdown button, #notification_settings .dropdown-menu{
+    border-radius: 1px;
 }

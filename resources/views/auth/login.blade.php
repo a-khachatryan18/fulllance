@@ -58,14 +58,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-md-12 text-center">
-                                <h4>Log In as:</h4>
-                                <span class="user_type btn btn-default" data-type = "client">Hire for a project</span>
-                                <span class="user_type btn btn-default" data-type = "freelancer">Work as a freelancer</span>
-                                <input type="hidden" name = 'user_type' id = "user_type">
-                                <span class="error_message" id = "usertype_error"></span>
-                            </div>
                             <div class="form-group">
                                 <div class="text-center">
                                     <button type="submit" id = "signin_user" class="btn btn-success">
